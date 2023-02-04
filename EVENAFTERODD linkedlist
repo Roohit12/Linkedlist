@@ -1,0 +1,48 @@
+public class Solution {
+
+	public static LinkedListNode<Integer> evenAfterOdd(LinkedListNode<Integer> head) {
+		//Your code goes here
+        LinkedListNode<Integer>current=head;
+        LinkedListNode<Integer>OH =null;
+          LinkedListNode<Integer>OT =null;
+            LinkedListNode<Integer>EH =null;
+              LinkedListNode<Integer>ET =null;
+if(head==null||head.next==null){
+    return head;
+}
+
+while(current!=null){
+    if(current.data%2==0){
+        if(EH==null){
+            ET=EH=current;
+        }else{
+            ET.next=current;
+            ET=current;
+        }
+    }else{
+        if(OH==null){
+          OH=OT=current;
+        }else{
+            OT.next=current;
+            OT=current;
+        }
+
+    }current=current.next;
+}
+	 if(OH!=null){
+            OT.next=EH;
+        }
+        else{
+            return EH;
+        }
+        if(EH!=null){
+            ET.next=null;
+        }else
+        return OH;
+   
+    
+    OT.next=EH;
+    ET.next = null;
+    return OH;
+}
+}
